@@ -36,6 +36,8 @@ function enter_bench(){		# declare the entrance of a workload
     echo "patching args=$patching_args"
     local CONF_FILE=`${workload_func_bin}/load_config.py ${HIBENCH_CONF_FOLDER} $workload_config_file $workload_folder $patching_args`
     . $CONF_FILE
+    cat /home/ybw/Software/spark-2.3.0-bin-hadoop2.7/conf/spark-defaults.conf ${SPARK_PROP_CONF} > ${SPARK_PROP_CONF}_tmp
+    mv ${SPARK_PROP_CONF}_tmp ${SPARK_PROP_CONF}
 }
 
 function leave_bench(){		# declare the workload is finished
